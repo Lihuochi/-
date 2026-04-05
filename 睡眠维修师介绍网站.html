@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>睡眠维修师 - 治愈你的每一个失眠夜晚</title>
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+        }
+
+        :root {
+            --primary-color: #7B68EE; /* 调整为夜晚紫蓝主色调 */
+            --secondary-color: #7B52C8; /* 修改为星空紫色背景 */
+            --text-color: #FFFFFF; /* 文字改为白色，适配深色背景 */
+            --light-gray: #8A74C7; /* 浅灰改为淡紫色，适配深色背景 */
+            --accent-color: #FFD700; /* 金色星星点缀 - 保持不变 */
+            --bubble-color: #9A82D8; /* 泡泡背景色改为淡紫 */
+            --bubble-hover: #7B68EE; /* 泡泡hover颜色 */
+            --outline-color: #C0B3E8; /* 线框色改为浅紫色，适配深色背景 */
+        }
+
+        /* 星空背景 - 修改为深紫色星空 */
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.1) 90%);
+        }
+
+        /* 星星动画 - 保持黄色星星不变 */
+        .star {
+            position: absolute;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* 顶部标题栏 - 嵌入背景图 */
+        .header {
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            background-color: rgba(123, 82, 200, 0.8); /* 半透明紫色背景 */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
+            border: 3px solid var(--outline-color); /* 浅紫色勾线 */
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* 标题背景图容器 - 取消宽度限制 */
+        .title-container {
+            position: relative;
+            display: inline-block;
+            /* 移除 max-width 限制，让容器自适应图片宽度 */
+        }
+
+        .title-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* 🌟 移除鲸鱼背景图 🌟 */
+            background-image: none;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+            z-index: -1;
+            border-radius: 8px;
+        }
+
+        .title-img {
+            max-width: 100%; /* 修改为100%，完整显示图片 */
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            position: relative;
+            z-index: 1;
+            /* 移除 clip-path 裁剪属性，让图片完整显示 */
+        }
+
+        /* 导航栏 */
+        .nav {
+            background-color: rgba(123, 104, 238, 0.9); /* 半透明主色 */
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            border: 3px solid var(--outline-color); /* 浅紫色勾线 */
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            border: 1px solid rgba(255,255,255,0.5); /* 更明显的浅边框 */
+        }
+
+        .nav a:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        /* 主体容器 - 重构为左右分栏 */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 3fr; /* IP模块占1/4，技巧模块占3/4 */
+            gap: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* IP形象展示区 - 缩减占比，添加勾线 */
+        .ip-section {
+            background-color: rgba(154, 130, 216, 0.9); /* 半透明淡紫背景 */
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            border: 3px solid var(--outline-color); /* 浅紫色勾线 */
+            align-self: start; /* 顶部对齐 */
+        }
+
+        .ip-title {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 0 var(--outline-color); /* 勾线文字效果 */
+            color: #FFFFFF; /* 标题文字白色 */
+        }
+
+        .ip-img {
+            max-width: 100%; /* 适配侧边栏宽度 */
+            height: auto;
+            margin: 0 auto 15px;
+            border-radius: 10px;
+            border: 2px solid var(--outline-color); /* 浅紫色勾线 */
+        }
+
+        .ip-desc {
+            font-size: 14px;
+            color: #E0E0FF; /* 浅紫色文字 */
+            line-height: 1.6;
+        }
+
+        /* 入睡小技巧泡泡模块 - 重点优化，添加勾线 */
+        .tips-section {
+            background-color: rgba(154, 130, 216, 0.9); /* 半透明淡紫背景 */
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            border: 3px solid var(--outline-color); /* 浅紫色勾线 */
+        }
+
+        .tips-title {
+            font-size: 26px;
+            color: #FFFFFF; /* 白色标题 */
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--outline-color);
+            text-shadow: 1px 1px 0 var(--outline-color); /* 勾线文字效果 */
+        }
+
+        /* 泡泡分类标题 */
+        .tips-category {
+            font-size: 18px;
+            color: #FFFFFF; /* 白色 */
+            margin: 25px 0 15px;
+            font-weight: bold;
+            text-align: left;
+            padding-left: 10px;
+            border-left: 4px solid var(--outline-color);
+            text-shadow: 0.5px 0.5px 0 var(--outline-color);
+        }
+
+        /* 泡泡容器 - 分栏布局，避免冗余 */
+        .bubble-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* 调整宽度适配圆角矩形 */
+            gap: 20px;
+            margin: 15px 0 30px;
+            padding: 0 10px;
+        }
+
+        /* 泡泡样式优化 - 果冻质感圆角矩形 + 勾线 */
+        .bubble {
+            width: 100%;
+            height: 120px; /* 固定高度，取消圆形的aspect-ratio */
+            background: linear-gradient(135deg, var(--bubble-color), #A898E8); /* 果冻渐变背景 */
+            border-radius: 20px; /* 圆角矩形 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* 弹性动画，果冻质感 */
+            box-shadow: 0 4px 12px rgba(123, 104, 238, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid var(--outline-color); /* 浅紫色勾线 */
+        }
+
+        /* 果冻纹理高光 */
+        .bubble::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            height: 40%;
+            background-color: rgba(255,255,255,0.4);
+            border-radius: 15px 15px 0 0; /* 顶部高光，模拟果冻反光 */
+            z-index: 1;
+        }
+
+        .bubble:hover {
+            transform: translateY(-5px) scale(1.02); /* 上移+轻微放大，果冻弹性 */
+            box-shadow: 0 8px 20px rgba(123, 104, 238, 0.3);
+            background: linear-gradient(135deg, var(--bubble-hover), #8A74C7); /* hover渐变加深 */
+            color: white;
+            border-color: #D0C6F0; /* hover时勾线更浅 */
+        }
+
+        .bubble-text {
+            font-size: 14px; /* 调整字体大小适配矩形 */
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+            z-index: 2;
+            line-height: 1.4;
+            text-shadow: 0.5px 0.5px 0 var(--outline-color);
+            color: #FFFFFF; /* 白色文字 */
+        }
+
+        /* 技巧详情弹窗 - 新增勾线 */
+        .tips-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: #9A82D8; /* 紫色弹窗背景 */
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            border: 3px solid var(--outline-color); /* 浅紫色勾线 */
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #FFFFFF; /* 白色关闭按钮 */
+            background: none;
+            border: none;
+        }
+
+        .modal-title {
+            color: #FFFFFF; /* 白色标题 */
+            margin-bottom: 20px;
+            font-size: 22px;
+            border-bottom: 1px solid var(--outline-color);
+            padding-bottom: 10px;
+            text-shadow: 0.5px 0.5px 0 var(--outline-color);
+        }
+
+        .modal-content p, .modal-content ul {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            color: #F0F0FF; /* 浅紫色文字 */
+        }
+
+        .modal-content ul {
+            padding-left: 20px;
+        }
+
+        /* 熬夜危害科普区 - 添加勾线 */
+        .harm-section {
+            background-color: rgba(154, 130, 216, 0.9); /* 半透明淡紫背景 */
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            border: 3px solid var(--outline-color); /* 浅紫色勾线 */
+            grid-column: 1 / -1; /* 跨列显示 */
+        }
+
+        .section-title {
+            font-size: 26px;
+            color: #FFFFFF; /* 白色标题 */
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--outline-color);
+            text-shadow: 1px 1px 0 var(--outline-color);
+        }
+
+        .harm-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .harm-card {
+            background-color: var(--light-gray);
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s;
+            border: 2px solid var(--outline-color); /* 浅紫色勾线 */
+        }
+
+        .harm-card:hover {
+            transform: translateY(-5px);
+            border-color: #D0C6F0;
+        }
+
+        .harm-card h3 {
+            color: #FFE0E0; /* 浅红色 */
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-shadow: 0.5px 0.5px 0 var(--outline-color);
+        }
+
+        .harm-card p {
+            color: #F0F0FF; /* 浅紫色文字 */
+            font-size: 15px;
+        }
+
+        /* 入睡经验交流区 - 添加勾线 */
+        .experience-section {
+            background-color: rgba(154, 130, 216, 0.9); /* 半透明淡紫背景 */
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            border: 3px solid var(--outline-color); /* 浅紫色勾线 */
+            grid-column: 1 / -1; /* 跨列显示 */
+        }
+
+        .experience-form {
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 2px solid var(--outline-color); /* 浅紫色勾线 */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #FFFFFF; /* 白色标签 */
+            text-shadow: 0.5px 0.5px 0 var(--outline-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--outline-color); /* 浅紫色勾线 */
+            border-radius: 8px;
+            font-size: 16px;
+            resize: vertical;
+            background-color: #BAA8E8; /* 浅紫色输入框背景 */
+            color: #FFFFFF; /* 白色输入文字 */
+        }
+
+        /* 输入框placeholder样式 */
+        ::placeholder {
+            color: #E0E0FF;
+            opacity: 0.8;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--outline-color); /* 浅紫色勾线 */
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #8A74C7;
+            border-color: #D0C6F0;
+        }
+
+        .experience-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .experience-card {
+            background-color: var(--light-gray);
+            border-radius: 15px;
+            padding: 20px;
+            position: relative;
+            border: 2px solid var(--outline-color); /* 浅紫色勾线 */
+        }
+
+        .card-author {
+            font-size: 14px;
+            color: #E0E0FF; /* 浅紫色 */
+            margin-bottom: 10px;
+            text-shadow: 0.3px 0.3px 0 var(--outline-color);
+        }
+
+        .card-content {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #F0F0FF; /* 浅紫色文字 */
+        }
+
+        /* 页脚 - 添加勾线 */
+        .footer {
+            background-color: rgba(123, 104, 238, 0.9); /* 半透明主色 */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            position: relative;
+            z-index: 10;
+            border: 3px solid var(--outline-color); /* 浅紫色勾线 */
+            border-radius: 10px;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            /* 移动端恢复单列布局 */
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav a {
+                font-size: 16px;
+                padding: 6px 12px;
+            }
+
+            .section-title, .tips-title {
+                font-size: 22px;
+            }
+
+            .ip-img {
+                max-width: 250px;
+            }
+
+            .bubble-container {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 15px;
+            }
+
+            .bubble-text {
+                font-size: 13px;
+            }
+
+            .bubble {
+                height: 100px; /* 移动端调整高度 */
+            }
+
+            /* 移除移动端的图片裁剪 */
+            .title-img {
+                max-width: 90%; /* 移动端适当限制宽度，避免溢出 */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 10px 0;
+            }
+
+            .ip-section, .harm-section, .experience-section, .tips-section {
+                padding: 20px;
+            }
+
+            .harm-list, .experience-list {
+                grid-template-columns: 1fr;
+            }
+
+            .bubble-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .tips-category {
+                font-size: 16px;
+            }
+
+            .modal-title {
+                font-size: 20px;
+            }
+
+            .bubble {
+                height: 90px; /* 小屏进一步调整高度 */
+            }
+
+            .bubble-text {
+                font-size: 12px;
+            }
+
+            /* 小屏端标题图片宽度适配 */
+            .title-img {
+                max-width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态星空背景 -->
+    <div id="stars-container"></div>
+
+    <!-- 顶部标题 - 移除背景图 -->
+    <header class="header">
+        <div class="title-container">
+            <div class="title-bg"></div>
+            <!-- 🌟 保留SLEEP FIXER标题图片，仅移除背景图 🌟 -->
+            <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/8f3364bed85c4fe495905c88dd968ab9.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260406063022924BF28C2FAD68E5F7DA&rrcfp=8a172a1a&x-expires=1776033022&x-signature=Ob%2Bm31FChwroqDGHne1bLMofd44%3D" 
+                 alt="睡眠维修师标题" class="title-img">
+        </div>
+    </header>
+
+    <!-- 导航栏 -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#ip">IP形象</a>
+            <a href="#tips">入睡小技巧</a>
+            <a href="#harm">熬夜危害</a>
+            <a href="#experience">入睡经验</a>
+        </div>
+    </nav>
+
+    <!-- 主体内容 - 左右分栏布局 -->
+    <div class="container">
+        <!-- IP形象展示区 - 左侧窄栏 -->
+        <section id="ip" class="ip-section">
+            <h2 class="ip-title">睡眠维修师-修猫</h2>
+            <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/bb8ef4e0ac4c44aab6021ae3e9ce3a12.PNG~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260406063022924BF28C2FAD68E5F7DA&rrcfp=8a172a1a&x-expires=1776033022&x-signature=%2BxFDJe3PPwabvHMqHBjRalxTxiI%3D" 
+                 alt="睡眠维修师猫咪IP" class="ip-img">
+            <p class="ip-desc">
+                「睡眠维修师-修猫」是一只擅长治愈失眠的可爱猫咪，它穿着蓝色工装，带着睡眠专属小帽子，
+                立志帮每一个熬夜的人修复破碎的睡眠。
+            </p>
+        </section>
+
+        <!-- 右侧：修猫的入睡小技巧 -->
+        <section id="tips" class="tips-section">
+            <h2 class="tips-title">修猫的入睡小技巧 ✨</h2>
+            
+            <!-- 第一步：睡眠自查 -->
+            <h3 class="tips-category">📝 第一步：睡眠习惯自查</h3>
+            <div class="bubble-container">
+                <div class="bubble" onclick="openModal('checkModal')">
+                    <div class="bubble-text">8项自查<br>找失眠根源</div>
+                </div>
+                <div class="bubble" onclick="openModal('adjustModal')">
+                    <div class="bubble-text">核心原则<br>固定作息</div>
+                </div>
+            </div>
+
+            <!-- 第二步：核心调整 -->
+            <h3 class="tips-category">⏰ 第二步：作息精准调整</h3>
+            <div class="bubble-container">
+                <div class="bubble" onclick="openModal('scheduleModal')">
+                    <div class="bubble-text">固定作息<br>时间表</div>
+                </div>
+                <div class="bubble" onclick="openModal('stayUpModal')">
+                    <div class="bubble-text">熬夜后<br>补救方法</div>
+                </div>
+                <div class="bubble" onclick="openModal('gradualModal')">
+                    <div class="bubble-text">逐步调整<br>入睡时间</div>
+                </div>
+            </div>
+
+            <!-- 第三步：饮食搭配 -->
+            <h3 class="tips-category">🍽️ 第三步：科学饮食搭配</h3>
+            <div class="bubble-container">
+                <div class="bubble" onclick="openModal('sleepFoodModal')">
+                    <div class="bubble-text">睡前必吃<br>助眠食物</div>
+                </div>
+                <div class="bubble" onclick="openModal('dayFoodModal')">
+                    <div class="bubble-text">白天饮食<br>提升精力</div>
+                </div>
+                <div class="bubble" onclick="openModal('avoidFoodModal')">
+                    <div class="bubble-text">严格忌口<br>清单</div>
+                </div>
+            </div>
+
+            <!-- 第四步：运动规划 -->
+            <h3 class="tips-category">🏃 第四步：定制运动规划</h3>
+            <div class="bubble-container">
+                <div class="bubble" onclick="openModal('daySportModal')">
+                    <div class="bubble-text">日间运动<br>安排</div>
+                </div>
+                <div class="bubble" onclick="openModal('sleepSportModal')">
+                    <div class="bubble-text">睡前舒缓<br>运动</div>
+                </div>
+                <div class="bubble" onclick="openModal('officeSportModal')">
+                    <div class="bubble-text">久坐人群<br>补救法</div>
+                </div>
+            </div>
+
+            <!-- 第五步：环境与心理 -->
+            <h3 class="tips-category">🏡 第五步：环境与心理调节</h3>
+            <div class="bubble-container">
+                <div class="bubble" onclick="openModal('envModal')">
+                    <div class="bubble-text">睡眠环境<br>布置</div>
+                </div>
+                <div class="bubble" onclick="openModal('stressModal')">
+                    <div class="bubble-text">压力管理<br>方法</div>
+                </div>
+                <div class="bubble" onclick="openModal('phoneModal')">
+                    <div class="bubble-text">睡前断电<br>远离电子</div>
+                </div>
+                <div class="bubble" onclick="openModal('meditationModal')">
+                    <div class="bubble-text">冥想练习<br>诱导睡眠</div>
+                </div>
+            </div>
+
+            <!-- 第六步：辅助与坚持 -->
+            <h3 class="tips-category">🔧 第六步：辅助工具与长期坚持</h3>
+            <div class="bubble-container">
+                <div class="bubble" onclick="openModal('techModal')">
+                    <div class="bubble-text">睡眠黑科技<br>科学辅助</div>
+                </div>
+                <div class="bubble" onclick="openModal('insistModal')">
+                    <div class="bubble-text">长期坚持<br>巩固习惯</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 熬夜危害科普区 - 跨列显示 -->
+        <section id="harm" class="harm-section">
+            <h2 class="section-title">熬夜的那些隐藏危害</h2>
+            <div class="harm-list">
+                <div class="harm-card">
+                    <h3>🧠 损伤大脑认知</h3>
+                    <p>熬夜会导致记忆力下降、注意力不集中、反应变慢，长期熬夜还会增加老年痴呆风险，让大脑提前"老化"。</p>
+                </div>
+                <div class="harm-card">
+                    <h3>❤️ 伤害心血管</h3>
+                    <p>熬夜使心率加快、血压升高，增加高血压、冠心病、心肌梗死等心血管疾病风险，年轻人也不能忽视。</p>
+                </div>
+                <div class="harm-card">
+                    <h3>💆 皮肤状态变差</h3>
+                    <p>熬夜导致内分泌紊乱，皮肤暗沉、长斑、长痘、出现细纹，是颜值的"隐形杀手"。</p>
+                </div>
+                <div class="harm-card">
+                    <h3>🍽️ 消化功能紊乱</h3>
+                    <p>夜间是肠胃休息的时间，熬夜会刺激胃酸分泌，引发胃炎、胃溃疡，还会导致食欲异常、体重波动。</p>
+                </div>
+                <div class="harm-card">
+                    <h3>😵 免疫力下降</h3>
+                    <p>长期睡眠不足会直接削弱免疫系统功能，让你更容易感冒、疲劳，甚至增加患癌风险。</p>
+                </div>
+                <div class="harm-card">
+                    <h3>😡 情绪容易失控</h3>
+                    <p>熬夜影响多巴胺、血清素分泌，导致焦虑、易怒、抑郁等情绪问题，破坏心理健康。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 入睡经验交流区 - 跨列显示 -->
+        <section id="experience" class="experience-section">
+            <h2 class="section-title">入睡经验分享 · 一起睡个好觉</h2>
+            
+            <!-- 经验提交表单 -->
+            <div class="experience-form">
+                <h3 style="margin-bottom: 15px; color: #FFFFFF;">分享你的入睡小技巧</h3>
+                <form id="experienceForm">
+                    <div class="form-group">
+                        <label for="author">昵称</label>
+                        <input type="text" id="author" placeholder="请输入你的昵称" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">入睡经验</label>
+                        <textarea id="content" rows="5" placeholder="比如：睡前泡热水脚、听白噪音、远离电子设备..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">提交分享</button>
+                </form>
+            </div>
+
+            <!-- 经验列表 -->
+            <div class="experience-list" id="experienceList">
+                <!-- 示例经验 -->
+                <div class="experience-card">
+                    <div class="card-author">✨ 小眠</div>
+                    <div class="card-content">我每天睡前都会听30分钟的雨声白噪音，手机调至勿扰模式，泡一杯温牛奶，躺床上不看任何屏幕，一般10分钟就能睡着啦～</div>
+                </div>
+                <div class="experience-card">
+                    <div class="card-author">🐱 猫主子</div>
+                    <div class="card-content">睡前做5分钟简单的拉伸，放松肩颈和腰背，然后深呼吸4-7-8法（吸气4秒，屏息7秒，呼气8秒），亲测超有效！</div>
+                </div>
+                <div class="experience-card">
+                    <div class="card-author">🌙 夜归人</div>
+                    <div class="card-content">我会提前1小时营造睡眠氛围，调暗灯光，用香薰机滴几滴薰衣草精油，读几页纸质书，比刷手机容易入睡多了。</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 技巧详情弹窗 -->
+    <div id="tipsModal" class="tips-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h3 class="modal-title" id="modalTitle">睡眠习惯自查</h3>
+            <div id="modalContent">
+                <!-- 弹窗内容会通过JS动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 - 修改文字内容 -->
+    <footer class="footer">
+        <p>睡眠维修师 © 2026 | 失眠退散，好梦上线</p>
+    </footer>
+
+    <script>
+        // 1. 生成动态星空背景（黄色闪烁星星）
+        function createStars() {
+            const starsContainer = document.getElementById('stars-container');
+            const starCount = 150; // 星星数量
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // 随机大小（2-6px）
+                const size = Math.random() * 4 + 2;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // 随机位置
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                
+                // 随机动画延迟
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // 2. 泡泡弹窗内容数据
+        const modalData = {
+            checkModal: {
+                title: "8项睡眠习惯自查",
+                content: `
+                    <p>逐项打分（是=1分，否=0分），找准失眠根源：</p>
+                    <ul>
+                        <li>1. 每天入睡时间不固定，熬夜超过12点是常态</li>
+                        <li>2. 躺在床上超过30分钟才能入睡，频繁半夜醒来</li>
+                        <li>3. 白天补觉时间超过1小时，或傍晚才午睡</li>
+                        <li>4. 在床上玩手机、工作、追剧，床与睡眠无关</li>
+                        <li>5. 晨起时间不固定，周末赖床超过1小时</li>
+                        <li>6. 睡前喝咖啡、浓茶、酒精类饮品</li>
+                        <li>7. 睡前1小时仍在看电子屏幕</li>
+                        <li>8. 白天久坐不动，几乎无运动</li>
+                    </ul>
+                    <p><strong>评分结果：</strong></p>
+                    <ul>
+                        <li>0-2分：睡眠习惯良好，小幅优化即可</li>
+                        <li>3-5分：睡眠节律紊乱，需针对性调整</li>
+                        <li>6-8分：严重睡眠失衡，立即执行全套方案</li>
+                    </ul>
+                `
+            },
+            adjustModal: {
+                title: "核心调整原则",
+                content: `
+                    <p>以固定作息为核心，无论前一晚睡多晚，每天晨起时间固定，偏差不超过30分钟，逐步倒逼生物钟回归正常。</p>
+                `
+            },
+            scheduleModal: {
+                title: "固定作息时间表（通用版）",
+                content: `
+                    <ul>
+                        <li><strong>晨起：</strong>7:00（固定，雷打不动），醒来后立即拉开窗帘，接触自然光10分钟</li>
+                        <li><strong>午睡：</strong>12:30-13:00，时长严格控制在20-30分钟，绝不超过13:30</li>
+                        <li><strong>傍晚：</strong>18:00后避免高强度运动，不接触强光刺激</li>
+                        <li><strong>入睡：</strong>23:00前，睡前90分钟开始放松准备</li>
+                    </ul>
+                `
+            },
+            stayUpModal: {
+                title: "熬夜后补救方法",
+                content: `
+                    <p>严禁第二天补觉到中午，仅可晨起推迟30分钟起床，白天靠淡茶水提神，晚上提前30分钟入睡，24小时内回归原作息，防止生物钟彻底紊乱。</p>
+                `
+            },
+            gradualModal: {
+                title: "逐步调整入睡时间",
+                content: `
+                    <p>若当前入睡时间为凌晨1-2点，每天提前15-30分钟入睡，直至23:00，每周调整一次，给身体适应时间，避免强行早睡导致失眠加重。</p>
+                `
+            },
+            sleepFoodModal: {
+                title: "睡前必吃的助眠食物（睡前1-2小时，少量食用）",
+                content: `
+                    <ul>
+                        <li>富含色氨酸：温牛奶、香蕉、杏仁（5-8颗）、小米粥</li>
+                        <li>富含镁元素：牛油果、菠菜、南瓜子</li>
+                        <li>低糖碳水：一小片全麦面包、半根玉米</li>
+                    </ul>
+                `
+            },
+            dayFoodModal: {
+                title: "白天饮食指南（提升日间精力）",
+                content: `
+                    <ul>
+                        <li><strong>早餐：</strong>高蛋白+复合碳水，鸡蛋+全麦吐司+蔬菜</li>
+                        <li><strong>午餐：</strong>荤素搭配，多吃深海鱼（三文鱼、鳕鱼）补充Omega-3</li>
+                        <li><strong>晚餐：</strong>清淡为主，7分饱，19:00前吃完</li>
+                    </ul>
+                `
+            },
+            avoidFoodModal: {
+                title: "严格忌口清单",
+                content: `
+                    <ul>
+                        <li>下午14:00后：禁止咖啡、浓茶、能量饮料、巧克力</li>
+                        <li>睡前3小时：禁止暴饮暴食、甜食、酒精</li>
+                        <li>睡前1小时：禁止大量饮水</li>
+                    </ul>
+                    <p>小技巧：每天饮水量保持1500-2000ml，白天喝完，晚餐少盐。</p>
+                `
+            },
+            daySportModal: {
+                title: "日间运动安排（最佳时间15:00-17:00）",
+                content: `
+                    <ul>
+                        <li>有氧运动：每周3-5次，每次30分钟（快走、慢跑、瑜伽、游泳）</li>
+                        <li>力量训练：每周2次，每次20分钟（哑铃、平板支撑、深蹲）</li>
+                        <li>禁忌：睡前2小时禁止高强度运动</li>
+                    </ul>
+                `
+            },
+            sleepSportModal: {
+                title: "睡前舒缓运动（睡前30分钟，低强度）",
+                content: `
+                    <ul>
+                        <li>拉伸运动：颈部、肩部、腰部、腿部拉伸，每个动作保持30秒</li>
+                        <li>腹式呼吸配合慢走：室内慢走5分钟，配合深呼吸</li>
+                        <li>禁忌：任何让身体发热、出汗的运动</li>
+                    </ul>
+                `
+            },
+            officeSportModal: {
+                title: "久坐人群补救法",
+                content: `
+                    <p>每坐1小时，起身活动5分钟，拉伸、踮脚、转腰，避免久坐导致血液循环不畅，引发睡眠浅、多梦问题。</p>
+                `
+            },
+            envModal: {
+                title: "睡眠环境布置",
+                content: `
+                    <ul>
+                        <li><strong>光线：</strong>睡前90分钟用暖黄灯，入睡时全黑环境</li>
+                        <li><strong>温度：</strong>18-22℃，凉爽环境更易入睡</li>
+                        <li><strong>湿度：</strong>50%-60%，干燥用加湿器，潮湿用除湿机</li>
+                        <li><strong>声音：</strong>安静环境+白噪音（雨声、溪流声）</li>
+                        <li><strong>床品：</strong>床垫软硬适中，枕头高度与肩同宽</li>
+                    </ul>
+                `
+            },
+            stressModal: {
+                title: "压力管理方法",
+                content: `
+                    <h4>日间压力释放：</h4>
+                    <ul>
+                        <li>情绪笔记：每天10分钟写下焦虑和解决方案</li>
+                        <li>碎片化放松：每工作2小时做3分钟深呼吸</li>
+                    </ul>
+                    <h4>睡前压力清零：</h4>
+                    <ul>
+                        <li>清单梳理：写下第二天3件要事</li>
+                        <li>避免负面信息：睡前不看职场/恐怖内容</li>
+                    </ul>
+                `
+            },
+            phoneModal: {
+                title: "睡前“断电”练习",
+                content: `
+                    <ul>
+                        <li>睡前90分钟关闭所有电子设备，必须用时开启蓝光滤镜</li>
+                        <li>手机放在卧室门外，杜绝带上床</li>
+                        <li>替代活动：纸质阅读、手工放松、温水泡脚（38-40℃，10分钟）</li>
+                    </ul>
+                `
+            },
+            meditationModal: {
+                title: "睡前冥想练习",
+                content: `
+                    <h4>基础呼吸冥想（5-10分钟）：</h4>
+                    <p>仰卧放松，鼻子吸气4秒→屏息2秒→嘴巴呼气6秒，专注呼吸节奏</p>
+                    <h4>身体扫描冥想（10分钟）：</h4>
+                    <p>从头顶到脚尖逐部位放松，刻意缓解紧绷部位</p>
+                    <h4>正念冥想：</h4>
+                    <p>不控制想法，专注当下呼吸，让大脑进入休息模式</p>
+                `
+            },
+            techModal: {
+                title: "睡眠黑科技使用",
+                content: `
+                    <h4>推荐工具：</h4>
+                    <ul>
+                        <li>褪黑素：短期使用，睡前30分钟1-3mg，连续不超2周</li>
+                        <li>睡眠眼罩+耳塞：全遮光3D眼罩效果更佳</li>
+                        <li>白噪音机/智能睡眠灯/睡眠手环</li>
+                    </ul>
+                    <p><strong>禁忌：</strong>仅作为辅助，不依赖，核心还是调整习惯</p>
+                `
+            },
+            insistModal: {
+                title: "长期坚持：巩固睡眠节律",
+                content: `
+                    <ul>
+                        <li>每周复盘：对照自查表打分，记录睡眠数据</li>
+                        <li>拒绝破例：非特殊情况不打破作息规律</li>
+                        <li>正向激励：感受精力提升、焦虑缓解的身体变化</li>
+                    </ul>
+                `
+            }
+        };
+
+        // 打开弹窗函数
+        function openModal(modalKey) {
+            const modal = document.getElementById('tipsModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            
+            modalTitle.textContent = modalData[modalKey].title;
+            modalContent.innerHTML = modalData[modalKey].content;
+            modal.style.display = 'flex';
+            
+            // 禁止背景滚动
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 关闭弹窗函数
+        function closeModal() {
+            const modal = document.getElementById('tipsModal');
+            modal.style.display = 'none';
+            
+            // 恢复背景滚动
+            document.body.style.overflow = 'auto';
+        }
+
+        // 点击弹窗外部关闭
+        window.onclick = function(event) {
+            const modal = document.getElementById('tipsModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // 3. 经验分享表单提交逻辑
+        const experienceForm = document.getElementById('experienceForm');
+        const experienceList = document.getElementById('experienceList');
+
+        experienceForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // 阻止表单默认提交
+            
+            // 获取表单数据
+            const author = document.getElementById('author').value;
+            const content = document.getElementById('content').value;
+            
+            // 创建新的经验卡片
+            const newCard = document.createElement('div');
+            newCard.className = 'experience-card';
+            newCard.innerHTML = `
+                <div class="card-author">✨ ${author}</div>
+                <div class="card-content">${content}</div>
+            `;
+            
+            // 添加到列表顶部
+            experienceList.insertBefore(newCard, experienceList.firstChild);
+            
+            // 清空表单
+            experienceForm.reset();
+            
+            // 提示提交成功
+            alert('你的入睡经验分享成功啦！感谢你的贡献～');
+        });
+
+        // 4. 导航栏平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 初始化星空
+        createStars();
+    </script>
+</body>
+</html>
